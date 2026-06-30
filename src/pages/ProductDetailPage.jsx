@@ -60,6 +60,12 @@ function ProductDetailPage() {
   { match: /bag|crossbody|handbag/i, url: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&h=500&fit=crop" },
   { match: /hoodie/i, url: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=500&fit=crop" },
   { match: /tee|t-shirt|graphic tee/i, url: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop" },
+  { match: /headphone|bose|quietcomfort|earbud/i, url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop" },
+  { match: /switch|nintendo|console/i, url: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500&h=500&fit=crop" },
+  { match: /galaxy|iphone|smartphone|phone/i, url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop" },
+  { match: /macbook|laptop|notebook/i, url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=500&fit=crop" },
+  { match: /watch/i, url: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop" },
+  { match: /camera/i, url: "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=500&h=500&fit=crop" },
 ];
 
 function getFallbackImage(name) {
@@ -67,7 +73,7 @@ function getFallbackImage(name) {
   return found ? found.url : "https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=500&fit=crop";
 }
 
-const imageUrl = product.images?.[0]?.url || product.images?.[0] || getFallbackImage(product.name);
+const imageUrl = product.images?.[0]?.url || product.images?.[0] || getFallbackImage(product);
             return <img src={imageUrl} alt={product.name} className="w-full h-full object-cover" />;
           })()}
         </div>
