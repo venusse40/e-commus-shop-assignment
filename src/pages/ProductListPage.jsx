@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useProducts } from "../features/products/useproducts";
+import { useProducts } from "../features/products/useProducts";
 import { useCategories } from "../features/categories/useCategories";
 import ProductCard from "../components/ui/ProductCard";
 
