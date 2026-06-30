@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useProduct } from "../features/products/useProduct";
+import { useproduct } from "../features/products/useproduct";
 import { useAddToCart } from "../features/cart/useCart";
 import { useToast } from "../context/ToastContext";
 
