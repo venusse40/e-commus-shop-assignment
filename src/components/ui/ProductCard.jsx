@@ -21,9 +21,13 @@ function ProductCard({ product }) {
   { match: /camera/i, url: "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=500&h=500&fit=crop" },
 ];
 
-function getFallbackImage(name) {
-  const found = imageKeywordMap.find((entry) => entry.match.test(name));
-  return found ? found.url : "https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=500&fit=crop";
+function getFallbackImage(product) {
+  const found = imageKeywordMap.find((entry) => entry.match.test(product.name));
+  if (found) return found.url;
+  if (product.category?.name === "Electronics") {
+    return "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=500&fit=crop";
+  }
+  return "https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=500&fit=crop";
 }
 
 const imageUrl = product.images?.[0]?.url || product.images?.[0] || getFallbackImage(product);
