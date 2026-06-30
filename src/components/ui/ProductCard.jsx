@@ -1,11 +1,29 @@
 import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
-  const categoryTag = (product.category?.name || "shopping").toLowerCase();
+  const imageKeywordMap = [
+  { match: /jacket|coat|puffer/i, query: "jacket" },
+  { match: /cardigan|sweater|knit/i, query: "sweater" },
+  { match: /shirt|oxford|button-down/i, query: "dress-shirt" },
+  { match: /trouser|chino|pants/i, query: "trousers" },
+  { match: /jean|denim/i, query: "jeans" },
+  { match: /dress/i, query: "dress" },
+  { match: /sneaker|shoe/i, query: "sneakers" },
+  { match: /sunglasses/i, query: "sunglasses" },
+  { match: /bag|crossbody|handbag/i, query: "handbag" },
+  { match: /hoodie/i, query: "hoodie" },
+  { match: /tee|t-shirt|graphic tee/i, query: "tshirt" },
+];
+
+function getImageQuery(name) {
+  const found = imageKeywordMap.find((entry) => entry.match.test(name));
+  return found ? found.query : "fashion-clothing";
+}
+
 const imageUrl =
   product.images?.[0]?.url ||
   product.images?.[0] ||
-  `https://loremflickr.com/500/500/${encodeURIComponent(categoryTag)}?lock=${product.id}`;
+  `https://loremflickr.com/500/500/${getImageQuery(product.name)}?lock=${product.id}`;
   return (
     <Link
       to={`/products/${product.id}`}
