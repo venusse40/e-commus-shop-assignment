@@ -1,17 +1,11 @@
 import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
-  const categoryImages = {
-  Fashion: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=500&fit=crop",
-  Clothing: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop",
-  Electronics: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=500&h=500&fit=crop",
-};
-
+  const categoryTag = (product.category?.name || "shopping").toLowerCase();
 const imageUrl =
   product.images?.[0]?.url ||
   product.images?.[0] ||
-  categoryImages[product.category?.name] ||
-  "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500&h=500&fit=crop";
+  `https://loremflickr.com/500/500/${encodeURIComponent(categoryTag)}?lock=${product.id}`;
   return (
     <Link
       to={`/products/${product.id}`}
