@@ -2,28 +2,25 @@ import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
   const imageKeywordMap = [
-  { match: /jacket|coat|puffer/i, query: "jacket" },
-  { match: /cardigan|sweater|knit/i, query: "sweater" },
-  { match: /shirt|oxford|button-down/i, query: "dress-shirt" },
-  { match: /trouser|chino|pants/i, query: "trousers" },
-  { match: /jean|denim/i, query: "jeans" },
-  { match: /dress/i, query: "dress" },
-  { match: /sneaker|shoe/i, query: "sneakers" },
-  { match: /sunglasses/i, query: "sunglasses" },
-  { match: /bag|crossbody|handbag/i, query: "handbag" },
-  { match: /hoodie/i, query: "hoodie" },
-  { match: /tee|t-shirt|graphic tee/i, query: "tshirt" },
+  { match: /jacket|coat|puffer/i, url: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=500&fit=crop" },
+  { match: /cardigan|sweater|knit/i, url: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&h=500&fit=crop" },
+  { match: /shirt|oxford|button-down/i, url: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&h=500&fit=crop" },
+  { match: /trouser|chino|pants/i, url: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500&h=500&fit=crop" },
+  { match: /jean|denim/i, url: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&h=500&fit=crop" },
+  { match: /dress/i, url: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&h=500&fit=crop" },
+  { match: /sneaker|shoe/i, url: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop" },
+  { match: /sunglasses/i, url: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&h=500&fit=crop" },
+  { match: /bag|crossbody|handbag/i, url: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&h=500&fit=crop" },
+  { match: /hoodie/i, url: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=500&fit=crop" },
+  { match: /tee|t-shirt|graphic tee/i, url: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop" },
 ];
 
-function getImageQuery(name) {
+function getFallbackImage(name) {
   const found = imageKeywordMap.find((entry) => entry.match.test(name));
-  return found ? found.query : "fashion-clothing";
+  return found ? found.url : "https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=500&fit=crop";
 }
 
-const imageUrl =
-  product.images?.[0]?.url ||
-  product.images?.[0] ||
-  `https://loremflickr.com/500/500/${getImageQuery(product.name)}?lock=${product.id}`;
+const imageUrl = product.images?.[0]?.url || product.images?.[0] || getFallbackImage(product.name);
   return (
     <Link
       to={`/products/${product.id}`}
